@@ -1,3 +1,13 @@
+.main {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+html body {
+  margin: 0;
+}
+
 .flex-container {
   display: flex;
   flex-direction: row;
@@ -8,17 +18,23 @@
 }
 
 .container {
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 10px 0 10px;
-  background-color: aqua;
+  text-align: center;
+  font-family: sans-serif;
+  flex: 1;
 }
 
 .item {
   align-self: center;
 }
 
-html, body {
-margin: 0;
-padding: 0;
+.item_icons {
+  align-self: center;
+  margin: 0 5px 0 5px;
+}
+
+.footer {
+  display: flex;
+  background-color: grey;
+  height: 50px;
+  justify-content: center;
 }

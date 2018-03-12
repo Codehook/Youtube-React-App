@@ -32,25 +32,10 @@ import styling from "./styling.css";
   justifyContent: "center",
 };*/
 
-class SearchBar extends React.Component {
-  state = { searchQuery: "", searchResults: [] };
+const rootURL = "https://www.googleapis.com/youtube/v3/search";
+const API_KEY = "AIzaSyA7_JtopQHv6JmDfv3VuZa34uDZgrzZVwQ";
 
-  handleSearch = e => {
-    this.setState({
-      searchQuery: e.target.value
-    });
-  };
-
-  handleSubmit = e => {
-    e.preventDefault();
-    console.log(this.state.searchResults);
-    // Do request here. Then, later...
-    this.setState({
-      searchResults: [{ name: "first result" }, { name: "second result" }]
-    });
-  };
-
-  render() {
+const SearchBar = ({videos, ...props}) => {
     return (
       <div class="flex-container">
         <div class="item">
@@ -59,30 +44,24 @@ class SearchBar extends React.Component {
           </a>
         </div>
         <div class="item">
-          <form onSubmit={this.handleSubmit}>
+          <form onSubmit={props.onSubmitPress}>
             <input
-              onChange={this.handleSearch}
+              onChange={props.handleSearch}
               type="search"
               name="q"
               maxLength="50"
               size="38"
+              value={props.searchQuery}
               placeholder="Search for something here"
             />
             <button type="submit">
               <FontAwesomeIcon icon="search" />
             </button>
           </form>
-          {/*I'll just thdiv it in here for now*/}
-          {this.state.searchResults.map((result, i) => (
-            <p>
-              {i}. {result.name}
-            </p>
-          ))}
         </div>
-        <div class="item"/>
+        <div class="item" />
       </div>
-    );
-  }
+    )
 }
 
 export default SearchBar;
